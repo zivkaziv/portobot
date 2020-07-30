@@ -1,0 +1,20 @@
+{
+  "name": "portugal-scraper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "http": "0.0.1-security",
+    "puppeteer": "^5.2.1",
+    "puppeteer-extra": "^3.1.13",
+    "puppeteer-extra-plugin-stealth": "^2.4.14",
+    "telebot": "^1.4.1",
+    "telegram-bot-api": "^2.0.0"
+  }
+}
