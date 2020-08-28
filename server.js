@@ -9,8 +9,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 app.post("/messages/:token", function (req, res) {
-	const chatId = req.body.chat.id;
-	const text = req.body.text.toLowerCase();
+	console.log(req.body);
+	const chatId = req.body.message.chat.id;
+	const text = req.body.message.text.toLowerCase();
 	if (text === "/start") {
 		textSender(chatId)("Hey:) ... What is your name?");
 		return;
@@ -24,7 +25,6 @@ app.post("/messages/:token", function (req, res) {
 		textSender(chatId)(`I don't know you... fuck off`);
 		return;
 	}
-	console.log(req.body);
 	res.status(200).send();
 });
 
