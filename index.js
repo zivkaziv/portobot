@@ -47,7 +47,7 @@ const handleValidMessage = async (msg, id) => {
 		msg.reply.text("Done.... Please spread the work about me...");
 	}
 };
-const bot = new TeleBot("1233225492:AAHYswlcLkcnYDzGUhbGHJCjVeF3YHo75GI");
+const bot = new TeleBot("<TOKEN>");
 (async () => {
 	bot.on("text", async (msg) => {
 		console.log(msg);
