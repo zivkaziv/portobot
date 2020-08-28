@@ -15,7 +15,6 @@ app.post("/messages/:token", function (req, res) {
 		const text = req.body.message.text.toLowerCase();
 		if (text === "/start") {
 			textSender(chatId)("Hey:) ... What is your name?");
-			return;
 		} else if (text.toLowerCase() === "ziv") {
 			requestExecuter(
 				textSender(chatId),
@@ -24,7 +23,6 @@ app.post("/messages/:token", function (req, res) {
 			);
 		} else {
 			textSender(chatId)(`I don't know you... fuck off`);
-			return;
 		}
 		res.status(200).send();
 	} catch (e) {
