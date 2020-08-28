@@ -9,23 +9,28 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 app.post("/messages/:token", function (req, res) {
-	console.log(req.body);
-	const chatId = req.body.message.chat.id;
-	const text = req.body.message.text.toLowerCase();
-	if (text === "/start") {
-		textSender(chatId)("Hey:) ... What is your name?");
-		return;
-	} else if (text.toLowerCase() === "ziv") {
-		requestExecuter(
-			textSender(chatId),
-			photoSender(chatId),
-			process.env.ZIV_ID
-		);
-	} else {
-		textSender(chatId)(`I don't know you... fuck off`);
-		return;
+	try {
+		console.log(req.body);
+		const chatId = req.body.message.chat.id;
+		const text = req.body.message.text.toLowerCase();
+		if (text === "/start") {
+			textSender(chatId)("Hey:) ... What is your name?");
+			return;
+		} else if (text.toLowerCase() === "ziv") {
+			requestExecuter(
+				textSender(chatId),
+				photoSender(chatId),
+				process.env.ZIV_ID
+			);
+		} else {
+			textSender(chatId)(`I don't know you... fuck off`);
+			return;
+		}
+		res.status(200).send();
+	} catch (e) {
+		console.error(e);
+		res.status(200).send();
 	}
-	res.status(200).send();
 });
 
 app.get("/admin/:name", function (req, res) {
