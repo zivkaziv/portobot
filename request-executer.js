@@ -7,7 +7,7 @@ const requestExecuter = async (textSender, photoSender, id) => {
 		textSender(message);
 	} else {
 		photoSender(`${id}.png`);
-		textSender("Done.... Please spread the work about me...");
+		textSender("Done.... Please spread the word about me...");
 	}
 };
 
