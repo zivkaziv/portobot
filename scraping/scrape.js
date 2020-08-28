@@ -3,7 +3,7 @@ const StealthPlugin = require("puppeteer-extra-plugin-stealth");
 const solve = require("./catpch-solver");
 
 const chromeOptions = {
-	headless: false,
+	headless: true,
 	defaultViewport: null,
 	slowMo: 10,
 	args: [
