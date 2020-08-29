@@ -1,29 +1,30 @@
 const express = require("express");
 const path = require("path");
-const telegramBot = require("./telegram-bot");
+const mongoose = require("mongoose");
 const app = express();
-const { photoSender, textSender } = require("./telegram-bot");
-const { requestExecuter } = require("./request-executer");
-
+const telegramBot = require("./telegram/telegram-bot");
+const TelegramMessage = require("./models/TelegramMessage");
+const { handle } = require("./message-handler");
+ 
+telegramBot.start();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-app.post("/messages/:token", function (req, res) {
+const connectionString =
+	process.env.MONGO_URI ||
+	"mongodb://root:rootpassword@localhost:27017/portobot?authSource=admin";
+
+mongoose.connect(connectionString, {
+	useUnifiedTopology: true,
+	useNewUrlParser: true,
+	useCreateIndex: true,
+});
+
+app.post("/messages/:token", async (req, res) => {
 	try {
 		console.log(req.body);
-		const chatId = req.body.message.chat.id;
-		const text = req.body.message.text.toLowerCase();
-		if (text === "/start") {
-			textSender(chatId)("Hey:) ... What is your name?");
-		} else if (text.toLowerCase() === "ziv") {
-			requestExecuter(
-				textSender(chatId),
-				photoSender(chatId),
-				process.env.ZIV_ID
-			);
-		} else {
-			textSender(chatId)(`I don't know you... fuck off`);
-		}
+		const telegramMessage = new TelegramMessage(req.body);
+		await handle(telegramMessage);
 		res.status(200).send();
 	} catch (e) {
 		console.error(e);

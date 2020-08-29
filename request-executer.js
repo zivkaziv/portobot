@@ -1,13 +1,20 @@
 const { scrape } = require("./scraping/scrape");
 
 const requestExecuter = async (textSender, photoSender, id) => {
-	textSender("Got your request");
+	textSender("Starting to work on your request");
 	const message = await scrape(id);
 	if (message) {
-		textSender(message);
+		await textSender(message);
+		return {
+			failed: {},
+		};
 	} else {
-		photoSender(`${id}.png`);
-		textSender("Done.... Please spread the word about me...");
+		await photoSender(`${id}.png`);
+		await textSender("Done.... Please spread the word about me...");
+		await textSender(`Just write me "hit" and I'll check the status for you`);
+		return {
+			success: {},
+		};
 	}
 };
 

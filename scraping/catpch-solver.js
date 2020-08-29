@@ -55,7 +55,6 @@ async function solve(page) {
 		}
 
 		const element = await recaptchaFrame.$(".rc-doscaptcha-header-text");
-		console.log(element);
 		await page.waitForFunction(() => {
 			const iframe = document.querySelector('iframe[src*="api2/bframe"]');
 			if (!iframe) return false;

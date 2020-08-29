@@ -1,14 +1,17 @@
 const puppeteer = require("puppeteer-extra");
 const StealthPlugin = require("puppeteer-extra-plugin-stealth");
 const solve = require("./catpch-solver");
+const fs = require("fs");
+const cheerio = require("cheerio");
 
 const chromeOptions = {
-	headless: true,
+	headless: false,
 	defaultViewport: null,
 	slowMo: 10,
 	args: [
+		"--incognito",
 		"--no-sandbox",
-		'--disable-setuid-sandbox',
+		"--disable-setuid-sandbox",
 		'--user-data-dir="/tmp/chromium"',
 		"--disable-web-security",
 		"--disable-features=site-per-process",
@@ -39,6 +42,11 @@ const scrape = async (id) => {
 	await page.waitFor(1000);
 	await page.click("#btnPesquisa");
 	await page.waitFor(1000);
+
+	let html = await page.evaluate(() => document.body.innerHTML);
+	// await fs.writeFileSync(`${id}.html`, bodyHTML);
+	const $ = cheerio.load(html);
+	// TODO: get details and return them;
 	await page.screenshot({ path: `${id}.png`, fullPage: true });
 	console.log(`${id} - taking screenshot`);
 	await browser.close();
