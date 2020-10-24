@@ -1,7 +1,7 @@
 const TeleBot = require("telebot");
+const config = require('config');
 
-const botToken = process.env.TELEGRAM_BOT_TOKEN ;
-const bot = new TeleBot(botToken);
+const bot = new TeleBot(config.get('telegram.token'));
 
 module.exports = {
 	bot,

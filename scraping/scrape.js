@@ -3,9 +3,10 @@ const StealthPlugin = require("puppeteer-extra-plugin-stealth");
 const solve = require("./catpch-solver");
 const fs = require("fs");
 const cheerio = require("cheerio");
+const DEV = (process.env.NODE_ENV || 'development') === 'development';
 
 const chromeOptions = {
-	headless: false,
+	headless: ! DEV,
 	defaultViewport: null,
 	slowMo: 10,
 	args: [
@@ -19,7 +20,7 @@ const chromeOptions = {
 };
 
 const scrape = async (id) => {
-	console.log(`${id} - Start sraping`);
+	console.log(`${id} - Start scraping`);
 	puppeteer.use(StealthPlugin());
 	const browser = await puppeteer.launch(chromeOptions);
 	console.log(`${id} - puppeteer.launch`);
