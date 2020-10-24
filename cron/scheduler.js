@@ -3,7 +3,6 @@ const checkStatusJob = require('./checkStatusJob');
 function schedule () {
   console.log ('SCHEDULED!!!');
 
-
   const checkStatusCronJob = new CronJob ({
     cronTime: '0 0 12 * * *',
     onTick () {
