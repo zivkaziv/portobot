@@ -5,7 +5,7 @@ const fs = require("fs");
 const cheerio = require("cheerio");
 
 const chromeOptions = {
-	headless: false,
+	headless: true,
 	defaultViewport: null,
 	slowMo: 10,
 	args: [
