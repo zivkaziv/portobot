@@ -11,10 +11,8 @@ const chromeOptions = {
 	args: [
 		"--incognito",
 		"--no-sandbox",
-		"--disable-setuid-sandbox",
-		'--user-data-dir="/tmp/chromium"',
-		"--disable-web-security",
-		"--disable-features=site-per-process",
+		"--single-process",
+		"--no-zygote",
 	],
 };
 
