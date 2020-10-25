@@ -9,7 +9,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "api": "PORT=3003 nodemon --ignore './\"/tmp/' server.js",
-    "start": "NODE_ENV=production node server.js"
+    "start": "NODE_ENV=production node server.js",
+    "heroku_logs": "heroku logs --tail",
+    "heroku_deploy": "git push heroku $(git branch --show-current):master"
   },
   "author": "",
   "license": "ISC",

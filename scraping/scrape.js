@@ -5,6 +5,7 @@ const fs = require("fs");
 const cheerio = require("cheerio");
 const DEV = (process.env.NODE_ENV || 'development') === 'development';
 
+//https://github.com/puppeteer/puppeteer/blob/main/docs/troubleshooting.md#running-puppeteer-on-heroku
 const chromeOptions = {
 	headless: ! DEV,
 	defaultViewport: null,
