@@ -13,6 +13,7 @@ const chromeOptions = {
 		"--no-sandbox",
 		"--single-process",
 		"--no-zygote",
+		"--disable-web-security",
 	],
 };
 
