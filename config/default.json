@@ -1,0 +1,10 @@
+{
+  "telegram": {
+    "token": "1372304744:AAFM3mLgsjj9o6_GPNiJvTUz6noxg3LBZXg"
+  },
+  "mongo": {
+    "user": "dudi",
+    "password": "gs0pqnyLPoiGHJRU",
+    "url": "mongodb+srv://dudi:gs0pqnyLPoiGHJRU@cluster0.jtnfq.mongodb.net/portobot?retryWrites=true&w=majority"
+  }
+}

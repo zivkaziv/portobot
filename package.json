@@ -1,15 +1,23 @@
 {
   "name": "portugal-scraper",
   "version": "1.0.0",
+  "engines": {
+    "node": "12.x"
+  },
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "api": "PORT=3003 nodemon --ignore './\"/tmp/' server.js",
+    "start": "NODE_ENV=production node server.js",
+    "heroku_logs": "heroku logs --tail",
+    "heroku_deploy": "git push heroku $(git branch --show-current):master"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.19.2",
+    "config": "^3.3.2",
     "cheerio": "^1.0.0-rc.3",
     "express": "^4.17.1",
     "http": "0.0.1-security",
@@ -17,6 +25,7 @@
     "puppeteer": "^5.2.1",
     "puppeteer-extra": "^3.1.13",
     "puppeteer-extra-plugin-stealth": "^2.4.14",
-    "telebot": "^1.4.1"
+    "telebot": "^1.4.1",
+    "cron": "^1.8.2"
   }
 }
