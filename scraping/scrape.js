@@ -9,14 +9,17 @@ const DEV = (process.env.NODE_ENV || 'development') === 'development';
 const chromeOptions = {
 	headless: ! DEV,
 	defaultViewport: null,
-	slowMo: 10,
+	slowMo: 5,
 	args: [
 		"--incognito",
 		"--no-sandbox",
-		"--disable-setuid-sandbox",
-		'--user-data-dir="/tmp/chromium"',
+		// "--disable-setuid-sandbox",
+		// '--user-data-dir="/tmp/chromium"',
+		// "--disable-web-security",
+		// "--disable-features=site-per-process",
+		"--single-process",
+		"--no-zygote",
 		"--disable-web-security",
-		"--disable-features=site-per-process",
 	],
 };
 
